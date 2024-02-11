@@ -7,8 +7,10 @@ import { Student } from '../types/student';
   providedIn: 'root'
 })
 export class StudentsService {
+  apiUrl="http://localhost:5092/api/StudentsControllers";
 
   constructor(private http:HttpClient) { }
 
-  getStudents=():Observable<Student[]>=> this.http.get<Student[]>("http://localhost:5092/api/StudentsControllers")
+  getStudents=():Observable<Student[]>=> this.http.get<Student[]>(this.apiUrl)
+  addStudent=(data:Student)=> this.http.post(this.apiUrl,data)
 }
